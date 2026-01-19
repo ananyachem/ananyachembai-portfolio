@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ananya Chembai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+
+    <div id="header">
+        <div class="container">
+
+    <!-- ---------NAV BAR--------- -->            
+            <nav>
+                <a href="../index.html"><img src="../assets/ananya_logo.png" class="logo"></a>
+                <ul>
+                    <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                    <li><a href="../pages/resume.html">Resume</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                    </li>
+                </ul>
+            </nav>
+
+    <!-- ---------6D HUNT SECTION--------- -->
+            <div class="project-content">
+                
+                <h2>Identifying Shapes of Varied Dimension in a 6D Space</h2>
+                <p>6 min read.</p><br>
+                
+                <p>The goal of this project was to identify all the shapes hidden in a dataset that lived entirely in six 
+                    dimensions. Sounds cute until you realize you can’t visualize anything above 4D, and the shapes are also 
+                    in different dimensions. So how do you find shapes you literally cannot see? Let’s go over that step-by-step.
+                </p>
+                
+                <h3>Clustering in 6D with K-Means</h3>
+                <p>My first step was to run K-Means on the raw 6D data to try and segment out any shapes or patterns. Since each 
+                    shape is just a set of points grouped together, clustering was the obvious place to start. After a lot of 
+                    playing with the K value and visual sanity checks, I landed on K = 6, meaning I had six distinct shapes hiding 
+                    in this space.
+                </p>
+                <center><img src="../assets/6dhunt/2dplot.png"><br><sub>Fig.1 2D Plot of the Data after K-Means</sub></center><br>
+                <center><img src="../assets/6dhunt/3dplot.png"><br><sub>Fig.2 3D Plot of the Data after K-Means</sub></center><br>
+                
+                <h3>PCA (a love-hate relationship)</h3>
+                <p>Next, I went for the usual "visualize it with PCA" approach — both in 2D and 3D. But this ended up being a huge 
+                    reality check. PCA is not just a visualization tool. It's linear, so expecting it to cleanly compress 6D data 
+                    into 2D or 3D without distortion? Kinda impossible. That said, I still used it — just differently. Instead of 
+                    PCA’ing the whole dataset at once, I ran PCA on each cluster individually, and more importantly, I paid attention 
+                    to the Explained Variance Ratios. That’s where the magic happened.
+                </p><br>
+                
+                <h3>Shape Breakdown (and my logic for each)</h3><br>
+
+                <h3>1. 6D Sphere (probably)</h3>
+                <p>This one had almost equal variance across all 6 principal components, and the standard deviation on each axis was 
+                    nearly identical. I couldn’t prove it was a 6D sphere (or cube), but based on the evidence, I’m calling it a 6D Sphere.
+                </p>
+                <center><img src="../assets/6dhunt/hist.png"><br><sub>Fig.1 2D Plot of the Data after K-Means</sub></center><br>
+
+                <h3>2. 1D Line</h3>
+                <p>TSuper clean — the variance was only significant along the first principal component, and all the points were aligned 
+                    negatively. A straight line in 6D, basically.
+                </p>
+                <center><img src="../assets/6dhunt/line.png"><br><sub>Fig.1 2D Plot of the Data after K-Means</sub></center><br>
+
+                <h3>3. 2D Rectangle</h3>
+                <p>This shape had variance concentrated in PC1 and PC2, and not much beyond that. Plotting it confirmed it — the shape was 
+                    flat and wide, aligned with the X-axis.
+                </p>
+                <center><img src="../assets/6dhunt/rectangle.png"><br><sub>Fig.1 2D Plot of the Data after K-Means</sub></center><br>
+
+                <h3>4. 3D Cuboid</h3>
+                <p>Now we’re getting deeper. This one had significant variance across three principal components, and the height was around 
+                    6 units. It didn’t seem tilted either — likely aligned with the X-axis.
+                </p>
+                <center><img src="../assets/6dhunt/cuboid.png"><br><sub>Fig.1 2D Plot of the Data after K-Means</sub></center><br>
+
+                <h3>5. 2D Ellipse (with a plot twist)</h3>
+                <p>This shape looked like an ellipse, but PC3 contributed about 22% of its variance — meaning it was likely tilted into the 
+                    third dimension. I still classified it as a 2D object though, since it had almost no depth beyond that.
+                </p>
+                <center><img src="../assets/6dhunt/ellipse.png"><br><sub>Fig.1 2D Plot of the Data after K-Means</sub></center><br>
+
+                <h3>6. 5D Star (no really)</h3>
+                <p>This one gave me headaches. It looked like lines were radiating from a center point — kinda like an asterisk. It had just 
+                    enough contribution from PC6 (~4%) that I believe it was a 5D object tilted in 6D.
+                </p>
+
+                <center>
+                    <a href="https://github.com/ananyachem/6d-data-hunt" class="project-btn">Full Repository</a>
+                </center>
+            
+            </div>
+            
+        </div>
+    </div>
+
+
+</body>
+</html>

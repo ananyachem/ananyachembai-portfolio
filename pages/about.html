@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ananya Chembai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+
+    <div id="header">
+        <div class="container">
+
+    <!-- ---------NAV BAR--------- -->            
+            <nav>
+                <a href="../index.html"><img src="../assets/ananya_logo.png" class="logo"></a>
+                <ul>
+                    <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                    <li><a href="../pages/resume.html">Resume</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                    </li>
+                </ul>
+            </nav>
+
+    <!-- ---------ABOUT SECTION--------- -->            
+            <div id="about">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="about-col-1">
+                            <img src="../assets/ananya_1.jpeg">
+                        </div>
+
+                        <div class="about-col-2">           
+                            <h2 class="sub-title">Here's a little more about me!</h2><br>
+                            <p>
+                                I am an Engineer and a problem-solver. I constantly find myself wondering 
+                                how to make everyday things better and easier using data. When I'm not 
+                                wrangling data, you'd probably find me making brownies or testing a new 
+                                cookie recipe. I'm always up for a new challenge!
+                            </p>
+                        </div>
+
+                        <div class="about-col-3">
+                            <div class="tab-titles">
+                                <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                                <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                                <p class="tab-links" onclick="opentab('education')">Education</p>
+                            </div>
+
+                            <div class="tab-content active-tab" id="skills">
+                                <ul>
+                                    <li><span>Machine Learning & Deep Learning</span><br>Building models to predict / classify variables</li>
+                                    <li><span>Web Development</span><br>Designing Web interfaces</li>
+                                    <li><span>Baking</span><br>Making sweet treats from scratch</li>
+                                </ul>
+                            </div>
+
+                            <div class="tab-content" id="experience">
+                                <ul>
+                                    <li><span>May 2025 - Present</span><br>Data Engineer at PNC Bank</li>
+                                    <li><span>Apr 2024 - Jul 2024</span><br>Financial Analyst Intern at UBS</li>
+                                    <li><span>Jun 2022 - Aug 2022</span><br>Intern Consulting at Perficient</li>
+                                </ul>
+                            </div>
+
+                            <div class="tab-content" id="education">
+                                <ul>
+                                    <li><span>2025</span><br>Master's in Data Analytics for Science from Carnegie Mellon University</li>
+                                    <li><span>2024</span><br>Bachelor's in Computer Science from VIT, Vellore, India</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>  
+
+        </div>
+    </div>
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-content");
+
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        } 
+    </script>
+
+
+</body>
+</html>

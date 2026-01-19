@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ananya Chembai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+
+    <div id="header">
+        <div class="container">
+
+    <!-- ---------NAV BAR--------- -->            
+            <nav>
+                <a href="../index.html"><img src="../assets/ananya_logo.png" class="logo"></a>
+                <ul>
+                    <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                    <li><a href="../pages/resume.html">Resume</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                    </li>
+                </ul>
+            </nav>
+
+    <!-- ---------MALARIA SECTION--------- -->
+            <div class="project-content">
+                    
+                <h2>Malaria Cell Classification Using CNNs</h2>
+                    <p>2 min read.</p><br>
+                    <p>Malaria is a life-threatening disease caused by Plasmodium parasites, and timely diagnosis is critical to 
+                        treatment. In this project, I built a Convolutional Neural Network (CNN) to classify whether a given cell 
+                        image is parasitized or uninfected. 
+                        <br>The goal: make detection faster and more accurate using deep learning by classifying microscope images 
+                        of blood cells based on whether they are parasitized by Plasmodium or not. This is a binary classification 
+                        problem tackled using a custom residual CNN architecture.
+                    </p>
+                    <center><img src="../assets/malaria/malaria_cell.png" class="malaria-img"><br><sub>Fig.1 Malaria Infected Cell</sub></center><br>
+                    
+                    <h3>Methodology</h3>
+                    
+                    <h3>1. Data Augmentation</h3>
+                    <p>To improve the model’s ability to generalize and handle variability in image orientation, lighting, and scale, 
+                        I applied a rich set of transformations:
+                        <br>- Random horizontal and vertical flips
+                        <br>- Random brightness, contrast, saturation, and hue shifts
+                        <br>- Random rotations (0–270°)
+                        <br>- Random zooming followed by resizing and cropping
+                        This helped mimic real-world distortions in microscopic imaging.
+                    </p><br>
+                    
+                    <h3>2. CNN Architecture with Residual Blocks</h3>
+                    <p>I implemented a CNN with residual connections to tackle the vanishing gradients problem and boost performance 
+                        on deeper networks.
+                        <pre class="code-architecture">
+
+    Architecture Summary:
+
+        Initial Conv Layer:
+        32 filters, 3×3 kernel, ReLU activation
+            Batch Normalization
+            Max Pooling
+
+        Residual Blocks:
+            3 blocks with increasing filters: 64, 128, 256
+            Each block contains:
+                2 convolutional layers
+                Batch normalization
+                Shortcut/skip connection
+
+        Fully Connected Layers:
+            Flatten
+            Dense(256) → ReLU → Dropout(0.5)
+            Dense(128) → ReLU → Dropout(0.5)
+            Output Layer: 1 neuron with sigmoid activation
+
+        Training Setup:
+            Optimizer: AdamW (lr = 0.0001, weight decay = 1e-4)
+            Loss Function: Binary Cross-Entropy
+                        </pre>
+                    </p>
+                    <center><img src="../assets/malaria/filters.png"><br><sub>Fig.2 Learned Convolution Layers</sub></center><br>
+                    
+                    <h3>Model Results</h3>
+                    <p>The model performed consistently well, showing both high accuracy and generalization across training and 
+                        validation sets.<br>
+                    </p>
+                    <center><img src="../assets/malaria/accuracy.png"><br><sub>Fig.3 Accuracy Graph</sub></center><br>
+                    <center><img src="../assets/malaria/loss.png"><br><sub>Fig.4 Loss Graph</sub></center><br>
+
+  
+                    <h3>Feature Representation</h3>
+                    <center><img src="../assets/malaria/umap.png"><br><sub>Fig.5 UMAP Visualization</sub></center><br>
+                    <p>To understand how the model was separating the two classes, I visualized the embeddings using:
+                        <br>t-SNE – Showed clear separation between parasitized and uninfected cells
+                        <br>UMAP – Reinforced the same separation with smoother clustering.
+                    </p><br>
+
+                    <h3>Conclusions</h3>
+                    <p>Data augmentation significantly boosted the model’s robustness and prevented overfitting.
+                        Residual connections made training deeper architectures much more efficient.
+                        Even with relatively few layers, this architecture delivered state-of-the-art results for binary medical 
+                        image classification.
+                        This project showcases the power of CNNs in medical diagnostics and the potential of using residual blocks 
+                        even in smaller networks. With more data and fine-tuning, this model could be part of a real-time diagnostic 
+                        pipeline for malaria detection in low-resource settings.
+                    </p><br>
+
+                    <center>
+                        <a href="https://github.com/ananyachem/" class="project-btn">Full Repository</a>
+                    </center>
+                  
+            </div>
+            
+        </div>
+    </div>
+
+
+</body>
+</html>

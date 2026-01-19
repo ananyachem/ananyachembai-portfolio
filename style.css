@@ -1,0 +1,316 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Gravitas One", serif; 
+    font-weight: 400;
+    font-style: normal;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #fff1e6;
+    color: #333;
+}
+
+
+/* <!-- ---------HEADER SECTION--------- --> */
+#header{
+    width: 100%;
+    height: 100vh;
+}
+.container{
+    padding: 0.5rem 10%;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.logo{
+    width: 15rem;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 0.625rem 1.25rem;
+}
+nav ul li a{
+    color: #333;
+    text-decoration: none;
+    font-size: 1.125rem;
+    position: relative;
+}
+nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 0.2rem;
+    background: #ff5d8f;
+    position: absolute;
+    left: 0;
+    bottom: -0.375rem;
+    transition: 0.5s;
+}
+nav ul li a:hover::after{
+    width: 100%;
+}
+.header-content {
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.header-text{
+    font-size: 1.875rem;
+    flex: 1;
+    min-width: 20rem;
+}
+.header-text h1{
+    font-size: 3.5rem;
+    margin-top: 1.25rem;
+}
+.header-text h1 span{
+    color: #ff5d8f;
+}
+.header-text a{
+    color: #333;
+    font-size: 1.25rem;
+}
+.pink-computer{
+    flex: 1;
+    object-fit: contain;
+    height: 20rem;
+    min-width: 17.5rem;
+}
+
+
+
+/* <!-- ---------ABOUT ME SECTION--------- --> */
+#about{
+    padding: 5rem 0;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.about-col-1{
+    flex-shrink: 1;
+    padding: 1rem;
+    flex-basis: 30%;
+}
+.about-col-1 img{ 
+    width: 350px;
+    height: 450px;
+    border-radius: 15px;
+    border-style: double;
+    flex-shrink: 1; 
+    overflow: hidden;
+    border: 3px double;
+    border-radius: 15px;
+}
+.about-col-2{
+    flex-basis: 45%;
+}
+.about-col-2 p, .about-col-2 span, .about-col-2 li{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}  
+.about-col-3 p, .about-col-3 span, .about-col-3 li{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+.sub-title{
+    font-size: 3rem;
+}
+.tab-titles{
+    display: flex;
+    margin: 10rem 0 2.5rem;
+}
+.tab-links{
+    margin-right: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative; 
+}
+.tab-links::after{ 
+    content: '';
+    width: 0; 
+    height: 3px;
+    background: #ff5d8f;
+    position: absolute;
+    left: 0; 
+    bottom: -8px;
+    transition: 0.5s;
+}
+.tab-links.active-link::after{
+    width: 50%;
+}
+.tab-content ul li{
+    font-size: 2.25rem;
+    list-style: none;
+    margin: 1.25rem 0
+}
+.tab-content ul li span{
+    color: #ff5d8f;
+}
+.tab-content{
+    display: none;
+}
+.tab-content.active-tab{
+    display: block;
+}
+
+
+/* <!-- ---------PORTFOLIO SECTION--------- --> */
+#portfolio{
+    padding: 5rem 0;
+}
+.portfolio-header{
+    padding: 0.5rem 5%;
+}
+.project-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    grid-gap: 2.5rem;
+    margin-top: 1rem;
+}
+.project{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.project img{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+.project{
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+}
+.project:hover{
+    box-shadow: 0 0 20px 20px #fde2e4;
+}
+  
+
+/* <!-- ---------PROJECTS SECTION--------- --> */
+.project-content{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 2rem;
+    border: #333 1px solid;
+}
+.project-content p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+.project-content img{
+    width: 75%;
+    height: 50%;
+}
+.project-btn{
+    display: inline-block;
+    margin: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: #333;
+    background-color: #fde2e4;
+    border: #ff87ab 1px solid;
+}
+.project-btn:hover{
+    box-shadow: 0 0 12px #ff87ab;
+}
+.malaria-img{
+    width: 50% !important;
+    height: 50% !important;
+}
+.code-architecture{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.25rem;
+}
+  
+
+/* <!-- ---------RESUME SECTION--------- --> */
+.resume-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 2rem 0 2rem;
+}
+.resume{
+    width: 85%;
+    max-width: 900px;
+    height: 70vh;
+    box-shadow: 0 0 20px #ff5d8f;
+    border-radius: 8px;
+}
+
+
+/* <!-- ---------CONTACT SECTION--------- --> */
+.contact-container{
+    display: flex;
+    margin-top: 5%;
+}
+.contact-left{
+    flex-basis: 40%;
+}
+.contact-right{
+    flex-basis: 55%;
+}
+.contact-left p{
+    margin-top: 4rem
+}
+.contact-left i{
+    color: #ff5d8f;
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+.social-icons{
+    margin-top: 4rem;
+}
+.social-icons a{
+    text-decoration: none; 
+    font-size: 2rem; 
+    margin-right: 2rem; 
+    color: #ff5d8f;
+    transition: transform 0.3s;
+}
+.social-icons i:hover{
+    color: #fad2e1;
+    transform: translateY(-2px);
+}
+.contact-right form{
+    width: 100%;
+}
+form input, form textarea{
+    width: 100%;
+    border: 1px solid #9b72cf;
+    outline: none;
+    background: #f4effa;
+    padding: 1rem;
+    margin: 1rem;
+    color: #333;
+    font-size: 1.125rem;
+    border-radius: 5px;
+}  
+
+
+/* <!-- ---------RESPONSIVE SECTION--------- --> */
+@media only screen and (max-width: 600px){
+    /* #header{
+        background-image: url(assets/pink_computer_gif.webp) ;
+    } */
+    .header-text{
+        margin-top: 100%; font-size: 2rem;
+    }
+    .header-text h1{ 
+        font-size: 3.25rem;
+    }
+}

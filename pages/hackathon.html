@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -15,69 +16,82 @@
     <div id="header">
         <div class="container">
 
-    <!-- ---------NAV BAR--------- -->            
+    <!-- ---------NAV BAR--------- -->
             <nav>
                 <a href="../index.html"><img src="../assets/ananya_logo.png" class="logo"></a>
-                <ul>
+                <ul id="nav-menu">
+                    <i class="fas fa-times" id="close-icon"></i>
                     <li><a href="../pages/portfolio.html">Portfolio</a></li>
                     <li><a href="../pages/resume.html">Resume</a></li>
                     <li><a href="../pages/contact.html">Contact</a></li>
-                    </li>
                 </ul>
+                <i class="fas fa-bars" id="menu-icon"></i>
             </nav>
 
     <!-- ---------HACKATHON SECTION--------- -->
             <div class="project-content">
 
-                    <h2>Simulating Patient Reactions to Drugs and Placebo for Rare Disease Clinical Trials</h2>
-                    <p>2 min read.</p><br>
+                <h2>Simulating Patient Reactions to Drugs and Placebo for Rare Disease Clinical Trials</h2>
+                <p>2 min read.</p><br>
 
-                    <p>Many rare diseases struggle to recruit enough participants for clinical trials, and even when they do, 
-                        patients often drop out because of the risk of being assigned the placebo. To address this, I built a 
-                        tool using Generative Adversarial Networks (GANs) and Machine Learning that tackles three major problems:
-                    </p>
-                    <center><img src="../assets/hackathon/GAN_architecture.png"><br><sub>Fig.1 GAN Architecture</sub></center><br>
-                    
-                    <h3>Replacing the Placebo Group</h3>
-                    <p>One of the biggest reasons patients opt out of trials is the possibility of being given a placebo instead 
-                        of the actual treatment. To get around this, I created a synthetic control group using GANs — essentially, 
-                        the model learns to predict what would’ve happened to a patient if they had received the placebo. This way, 
-                        every actual participant can receive the drug, while we still preserve the statistical integrity of the 
-                        trial. A win-win.
-                    </p><br>
-                    
-                    <h3>Enabling Trials with Too Few Participants</h3>
-                    <p>Rare diseases, by definition, often don’t have enough active cases to even begin a trial. This model helps 
-                        simulate patient responses to drugs, allowing researchers to virtually test outcomes before even reaching 
-                        enrollment minimums. So even diseases with tiny patient populations can finally move toward treatment.
-                    </p><br>
-                    
-                    <h3>Matching Patients to Trials</h3>
-                    <p>As part of the project, I also built a clinical trial matching algorithm where doctors can input inclusion 
-                        criteria and receive a match score for eligible patients. This simplifies and speeds up the recruitment process 
-                        and ensures no patient is overlooked.
-                    </p>
-                    <center><img src="../assets/hackathon/trial_match.png"><br><sub>Fig.2 Clinical Trial Matching Interface</sub></center><br>
-                    
-                    <p>My best-performing model was XGBoost, with an R² score of 0.96, meaning it predicted patient responses with 
-                        near-perfect accuracy — closely mimicking real-world outcomes. With more research and fine-tuning, I truly believe 
-                        this approach can revolutionize the way we conduct clinical trials for rare diseases.<br>
-                    </p>
-                    <center><img src="../assets/hackathon/model_results.png"><br><sub>Fig.3 Results from XGBoost Model</sub></center><br>
-                    
-                    <p>A huge thank you to the National Organization for Rare Disorders (NORD) for sponsoring my trip to Boston, and 
-                        to Harvard for hosting such an inspiring event.
-                    </p>
+                <p>Many rare diseases struggle to recruit enough participants for clinical trials, and even when they do,
+                    patients often drop out because of the risk of being assigned the placebo. To address this, I built a
+                    tool using Generative Adversarial Networks (GANs) and Machine Learning that tackles three major problems:
+                </p>
+                <center><img src="../assets/hackathon/GAN_architecture.png" alt="GAN Architecture"><br><sub>Fig.1 GAN Architecture</sub></center><br>
 
-                    <center>
-                        <a href="https://github.com/ananyachem/" class="project-btn">Full Repository</a>
-                    </center>
-                  
-            </div>  
-            
+                <h3>Replacing the Placebo Group</h3>
+                <p>One of the biggest reasons patients opt out of trials is the possibility of being given a placebo instead
+                    of the actual treatment. To get around this, I created a synthetic control group using GANs — essentially,
+                    the model learns to predict what would've happened to a patient if they had received the placebo. This way,
+                    every actual participant can receive the drug, while we still preserve the statistical integrity of the
+                    trial. A win-win.
+                </p><br>
+
+                <h3>Enabling Trials with Too Few Participants</h3>
+                <p>Rare diseases, by definition, often don't have enough active cases to even begin a trial. This model helps
+                    simulate patient responses to drugs, allowing researchers to virtually test outcomes before even reaching
+                    enrollment minimums. So even diseases with tiny patient populations can finally move toward treatment.
+                </p><br>
+
+                <h3>Matching Patients to Trials</h3>
+                <p>As part of the project, I also built a clinical trial matching algorithm where doctors can input inclusion
+                    criteria and receive a match score for eligible patients. This simplifies and speeds up the recruitment process
+                    and ensures no patient is overlooked.
+                </p>
+                <center><img src="../assets/hackathon/trial_match.png" alt="Clinical Trial Matching Interface"><br><sub>Fig.2 Clinical Trial Matching Interface</sub></center><br>
+
+                <p>My best-performing model was XGBoost, with an R² score of 0.96, meaning it predicted patient responses with
+                    near-perfect accuracy — closely mimicking real-world outcomes. With more research and fine-tuning, I truly believe
+                    this approach can revolutionize the way we conduct clinical trials for rare diseases.<br>
+                </p>
+                <center><img src="../assets/hackathon/model_results.png" alt="Results from XGBoost Model"><br><sub>Fig.3 Results from XGBoost Model</sub></center><br>
+
+                <p>A huge thank you to the National Organization for Rare Disorders (NORD) for sponsoring my trip to Boston, and
+                    to Harvard for hosting such an inspiring event.
+                </p>
+
+                <center>
+                    <a href="https://github.com/ananyachem/" class="project-btn" target="_blank" rel="noopener">Full Repository</a>
+                </center>
+
+            </div>
+
         </div>
     </div>
 
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.add('open');
+        });
+        closeIcon.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+        });
+    </script>
 
 </body>
 </html>

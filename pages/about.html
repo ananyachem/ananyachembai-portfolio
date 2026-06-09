@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -15,18 +16,19 @@
     <div id="header">
         <div class="container">
 
-    <!-- ---------NAV BAR--------- -->            
+    <!-- ---------NAV BAR--------- -->
             <nav>
                 <a href="../index.html"><img src="../assets/ananya_logo.png" class="logo"></a>
-                <ul>
+                <ul id="nav-menu">
+                    <i class="fas fa-times" id="close-icon"></i>
                     <li><a href="../pages/portfolio.html">Portfolio</a></li>
                     <li><a href="../pages/resume.html">Resume</a></li>
                     <li><a href="../pages/contact.html">Contact</a></li>
-                    </li>
                 </ul>
+                <i class="fas fa-bars" id="menu-icon"></i>
             </nav>
 
-    <!-- ---------ABOUT SECTION--------- -->            
+    <!-- ---------ABOUT SECTION--------- -->
             <div id="about">
                 <div class="container">
                     <div class="row">
@@ -35,21 +37,21 @@
                             <img src="../assets/ananya_1.jpeg">
                         </div>
 
-                        <div class="about-col-2">           
+                        <div class="about-col-2">
                             <h2 class="sub-title">Here's a little more about me!</h2><br>
                             <p>
-                                I am an Engineer and a problem-solver. I constantly find myself wondering 
-                                how to make everyday things better and easier using data. When I'm not 
-                                wrangling data, you'd probably find me making brownies or testing a new 
+                                I am an Engineer and a problem-solver. I constantly find myself wondering
+                                how to make everyday things better and easier using data. When I'm not
+                                wrangling data, you'd probably find me making brownies or testing a new
                                 cookie recipe. I'm always up for a new challenge!
                             </p>
                         </div>
 
                         <div class="about-col-3">
                             <div class="tab-titles">
-                                <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                                <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                                <p class="tab-links" onclick="opentab('education')">Education</p>
+                                <p class="tab-links active-link" onclick="opentab(event, 'skills')">Skills</p>
+                                <p class="tab-links" onclick="opentab(event, 'experience')">Experience</p>
+                                <p class="tab-links" onclick="opentab(event, 'education')">Education</p>
                             </div>
 
                             <div class="tab-content active-tab" id="skills">
@@ -78,25 +80,36 @@
 
                     </div>
                 </div>
-            </div>  
+            </div>
 
         </div>
     </div>
 
     <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.add('open');
+        });
+        closeIcon.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+        });
+
         var tablinks = document.getElementsByClassName("tab-links");
         var tabcontents = document.getElementsByClassName("tab-content");
 
-        function opentab(tabname){
-            for(tablink of tablinks){
+        function opentab(event, tabname){
+            for(var tablink of tablinks){
                 tablink.classList.remove("active-link");
             }
-            for(tabcontent of tabcontents){
+            for(var tabcontent of tabcontents){
                 tabcontent.classList.remove("active-tab");
             }
             event.currentTarget.classList.add("active-link");
             document.getElementById(tabname).classList.add("active-tab");
-        } 
+        }
     </script>
 
 

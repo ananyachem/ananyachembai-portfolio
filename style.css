@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: "Gravitas One", serif; 
+    font-family: "Gravitas One", serif;
     font-weight: 400;
     font-style: normal;
     box-sizing: border-box;
@@ -13,10 +13,10 @@ body{
 }
 
 
-/* <!-- ---------HEADER SECTION--------- --> */
+/* ---------HEADER SECTION--------- */
 #header{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 }
 .container{
     padding: 0.5rem 10%;
@@ -26,9 +26,14 @@ nav{
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding: 1rem 0;
 }
 .logo{
     width: 15rem;
+}
+nav ul{
+    display: flex;
+    align-items: center;
 }
 nav ul li{
     display: inline-block;
@@ -53,6 +58,15 @@ nav ul li a::after{
 }
 nav ul li a:hover::after{
     width: 100%;
+}
+nav .fa-bars{
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ff5d8f;
+}
+nav ul .fa-times{
+    display: none;
 }
 .header-content {
     margin-top: 10%;
@@ -86,8 +100,7 @@ nav ul li a:hover::after{
 }
 
 
-
-/* <!-- ---------ABOUT ME SECTION--------- --> */
+/* ---------ABOUT ME SECTION--------- */
 #about{
     padding: 5rem 0;
 }
@@ -95,33 +108,36 @@ nav ul li a:hover::after{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 2rem;
 }
 .about-col-1{
     flex-shrink: 1;
     padding: 1rem;
     flex-basis: 30%;
+    min-width: 250px;
 }
-.about-col-1 img{ 
-    width: 350px;
-    height: 450px;
+.about-col-1 img{
+    width: 100%;
+    max-width: 350px;
+    height: auto;
     border-radius: 15px;
-    border-style: double;
-    flex-shrink: 1; 
-    overflow: hidden;
-    border: 3px double;
-    border-radius: 15px;
+    border: 3px double #333;
 }
 .about-col-2{
     flex-basis: 45%;
+    min-width: 250px;
+}
+.about-col-3{
+    flex-basis: 100%;
 }
 .about-col-2 p, .about-col-2 span, .about-col-2 li{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 2rem;
-}  
+}
 .about-col-3 p, .about-col-3 span, .about-col-3 li{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 2rem;
 }
 .sub-title{
@@ -129,21 +145,23 @@ nav ul li a:hover::after{
 }
 .tab-titles{
     display: flex;
-    margin: 10rem 0 2.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 3rem 0 2.5rem;
 }
 .tab-links{
     margin-right: 3rem;
     font-weight: bold;
     cursor: pointer;
-    position: relative; 
+    position: relative;
 }
-.tab-links::after{ 
+.tab-links::after{
     content: '';
-    width: 0; 
+    width: 0;
     height: 3px;
     background: #ff5d8f;
     position: absolute;
-    left: 0; 
+    left: 0;
     bottom: -8px;
     transition: 0.5s;
 }
@@ -151,7 +169,7 @@ nav ul li a:hover::after{
     width: 50%;
 }
 .tab-content ul li{
-    font-size: 2.25rem;
+    font-size: 1.5rem;
     list-style: none;
     margin: 1.25rem 0
 }
@@ -166,7 +184,7 @@ nav ul li a:hover::after{
 }
 
 
-/* <!-- ---------PORTFOLIO SECTION--------- --> */
+/* ---------PORTFOLIO SECTION--------- */
 #portfolio{
     padding: 5rem 0;
 }
@@ -175,44 +193,91 @@ nav ul li a:hover::after{
 }
 .project-list{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     grid-gap: 2.5rem;
     margin-top: 1rem;
+    padding: 0 5%;
 }
 .project{
     border-radius: 10px;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 .project img{
     width: 100%;
+    height: 220px;
+    object-fit: cover;
     border-radius: 10px;
     display: block;
+    transition: transform 0.4s;
+}
+.project:hover img{
+    transform: scale(1.05);
 }
 .project{
     border-radius: 10px;
     transition: box-shadow 0.3s ease;
 }
 .project:hover{
-    box-shadow: 0 0 20px 20px #fde2e4;
+    box-shadow: 0 0 20px 10px #fde2e4;
 }
-  
+.layer{
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(255,93,143,0.85));
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 0 1rem;
+    transition: height 0.4s ease;
+}
+.project:hover .layer{
+    height: 100%;
+}
+.layer h2{
+    font-size: 1.25rem;
+    margin-bottom: 0.4rem;
+}
+.layer sub{
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
 
-/* <!-- ---------PROJECTS SECTION--------- --> */
+
+/* ---------PROJECTS SECTION--------- */
 .project-content{
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin: 3% 5%;
     padding: 2rem;
     border: #333 1px solid;
 }
+.project-content h2{
+    margin-bottom: 0.5rem;
+}
+.project-content h3{
+    margin: 1.5rem 0 0.5rem;
+}
 .project-content p{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.125rem;
+    line-height: 1.9rem;
 }
 .project-content img{
-    width: 75%;
-    height: 50%;
+    max-width: 75%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.project-content center{
+    margin: 1rem 0;
 }
 .project-btn{
     display: inline-block;
@@ -228,16 +293,22 @@ nav ul li a:hover::after{
     box-shadow: 0 0 12px #ff87ab;
 }
 .malaria-img{
-    width: 50% !important;
-    height: 50% !important;
+    max-width: 50% !important;
 }
 .code-architecture{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.25rem;
+    font-size: 1rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background: #f9f0f3;
+    padding: 1rem;
+    border-radius: 5px;
+    line-height: 1.6;
 }
-  
 
-/* <!-- ---------RESUME SECTION--------- --> */
+
+/* ---------RESUME SECTION--------- */
 .resume-container{
     display: flex;
     justify-content: center;
@@ -253,38 +324,48 @@ nav ul li a:hover::after{
 }
 
 
-/* <!-- ---------CONTACT SECTION--------- --> */
+/* ---------CONTACT SECTION--------- */
+#contact{
+    padding: 3rem 0;
+}
 .contact-container{
     display: flex;
-    margin-top: 5%;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3%;
 }
 .contact-left{
-    flex-basis: 40%;
+    flex: 1;
+    min-width: 220px;
 }
 .contact-right{
-    flex-basis: 55%;
+    flex: 1.5;
+    min-width: 280px;
 }
 .contact-left p{
-    margin-top: 4rem
+    margin-top: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    line-height: 1.8;
 }
 .contact-left i{
     color: #ff5d8f;
-    margin-right: 2rem;
-    margin-left: 2rem;
+    margin-right: 1rem;
 }
 .social-icons{
-    margin-top: 4rem;
+    margin-top: 2.5rem;
 }
 .social-icons a{
-    text-decoration: none; 
-    font-size: 2rem; 
-    margin-right: 2rem; 
+    text-decoration: none;
+    font-size: 2rem;
+    margin-right: 1.5rem;
     color: #ff5d8f;
+    display: inline-block;
     transition: transform 0.3s;
 }
-.social-icons i:hover{
+.social-icons a:hover{
     color: #fad2e1;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 .contact-right form{
     width: 100%;
@@ -294,23 +375,177 @@ form input, form textarea{
     border: 1px solid #9b72cf;
     outline: none;
     background: #f4effa;
-    padding: 1rem;
-    margin: 1rem;
+    padding: 0.875rem 1rem;
+    margin: 0.75rem 0;
     color: #333;
     font-size: 1.125rem;
     border-radius: 5px;
-}  
+    font-family: 'Courier New', Courier, monospace;
+}
 
 
-/* <!-- ---------RESPONSIVE SECTION--------- --> */
-@media only screen and (max-width: 600px){
-    /* #header{
-        background-image: url(assets/pink_computer_gif.webp) ;
-    } */
-    .header-text{
-        margin-top: 100%; font-size: 2rem;
+/* ---------TABLET (max 900px)--------- */
+@media only screen and (max-width: 900px){
+    .container{
+        padding: 0.5rem 6%;
     }
-    .header-text h1{ 
-        font-size: 3.25rem;
+    .header-text{
+        font-size: 1.5rem;
+    }
+    .header-text h1{
+        font-size: 2.75rem;
+    }
+    .about-col-2, .about-col-1{
+        flex-basis: 48%;
+    }
+    .about-col-3{
+        flex-basis: 100%;
+    }
+    .sub-title{
+        font-size: 2.5rem;
+    }
+    .tab-titles{
+        margin: 2rem 0 1.5rem;
+    }
+    .tab-content ul li{
+        font-size: 1.25rem;
+    }
+    .project-content img{
+        max-width: 90%;
+    }
+    .malaria-img{
+        max-width: 70% !important;
+    }
+}
+
+
+/* ---------MOBILE (max 600px)--------- */
+@media only screen and (max-width: 600px){
+    .container{
+        padding: 0.5rem 5%;
+    }
+    .logo{
+        width: 10rem;
+    }
+
+    /* Mobile nav */
+    nav .fa-bars{
+        display: block;
+    }
+    nav ul{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #fff1e6;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+    }
+    nav ul.open{
+        display: flex;
+    }
+    nav ul li{
+        margin: 1.5rem 0;
+    }
+    nav ul li a{
+        font-size: 1.75rem;
+    }
+    nav ul .fa-times{
+        display: block;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 1.75rem;
+        cursor: pointer;
+        color: #ff5d8f;
+    }
+
+    /* Header hero */
+    .header-content{
+        margin-top: 15%;
+        flex-direction: column;
+        text-align: center;
+    }
+    .header-text{
+        font-size: 1.375rem;
+        min-width: unset;
+        width: 100%;
+    }
+    .header-text h1{
+        font-size: 2.25rem;
+    }
+    .pink-computer{
+        height: 14rem;
+        min-width: unset;
+        width: 80%;
+    }
+
+    /* About */
+    .about-col-1, .about-col-2, .about-col-3{
+        flex-basis: 100%;
+    }
+    .about-col-1 img{
+        max-width: 100%;
+    }
+    .about-col-2 p, .about-col-2 span, .about-col-2 li,
+    .about-col-3 p, .about-col-3 span, .about-col-3 li{
+        font-size: 1rem;
+        line-height: 1.75rem;
+    }
+    .sub-title{
+        font-size: 2rem;
+    }
+    .tab-titles{
+        margin: 1.5rem 0 1rem;
+    }
+    .tab-content ul li{
+        font-size: 1.1rem;
+    }
+
+    /* Portfolio grid */
+    .project-list{
+        grid-template-columns: 1fr;
+        padding: 0 2%;
+    }
+
+    /* Project content */
+    .project-content{
+        margin: 2% 2%;
+        padding: 1.25rem;
+    }
+    .project-content p{
+        font-size: 1rem;
+        line-height: 1.75rem;
+    }
+    .project-content img{
+        max-width: 100%;
+    }
+    .malaria-img{
+        max-width: 100% !important;
+    }
+    .code-architecture{
+        font-size: 0.85rem;
+    }
+
+    /* Resume */
+    .resume-container{
+        margin: 1rem;
+    }
+    .resume{
+        width: 100%;
+        height: 60vh;
+    }
+
+    /* Contact */
+    .contact-container{
+        flex-direction: column;
+    }
+    .contact-left, .contact-right{
+        flex: unset;
+        width: 100%;
     }
 }

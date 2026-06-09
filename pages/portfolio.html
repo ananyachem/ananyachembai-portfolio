@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -15,18 +16,19 @@
     <div id="header">
         <div class="container">
 
-    <!-- ---------NAV BAR--------- -->            
+    <!-- ---------NAV BAR--------- -->
             <nav>
                 <a href="../index.html"><img src="../assets/ananya_logo.png" class="logo"></a>
-                <ul>
+                <ul id="nav-menu">
+                    <i class="fas fa-times" id="close-icon"></i>
                     <li><a href="../pages/portfolio.html">Portfolio</a></li>
                     <li><a href="../pages/resume.html">Resume</a></li>
                     <li><a href="../pages/contact.html">Contact</a></li>
-                    </li>
                 </ul>
+                <i class="fas fa-bars" id="menu-icon"></i>
             </nav>
 
-    <!-- ---------6D DATA HUNT SECTION--------- -->
+    <!-- ---------PORTFOLIO SECTION--------- -->
             <div id="portfolio">
 
                 <div class="portfolio-header">
@@ -37,54 +39,37 @@
 
                     <div class="project">
                         <a href="../pages/hackathon.html">
-                            <img src="../assets/hackathon/hackathon.jpeg">
+                            <img src="../assets/hackathon/hackathon.jpeg" alt="Harvard Rare Disease Hackathon">
                         </a>
                         <div class="layer">
-                            <h2>Harvard Rare Disease Hackathon (2025) Project</h2>
-                            <sub>2 min read.</sub>
-                        </div>                    
+                            <h2>Harvard Rare Disease Hackathon (2025)</h2>
+                            <sub>2 min read</sub>
+                        </div>
                     </div>
 
                     <div class="project">
                         <a href="../pages/malaria.html">
-                            <img src="../assets/malaria/malaria.jpg">
+                            <img src="../assets/malaria/malaria.jpg" alt="Malaria Cell Classification">
                         </a>
                         <div class="layer">
                             <h2>Malaria Cell Classification</h2>
+                            <sub>2 min read</sub>
                         </div>
                     </div>
 
                     <div class="project">
                         <a href="../pages/6dhunt.html">
-                            <img src="../assets/6dhunt/graph.png">
+                            <img src="../assets/6dhunt/graph.png" alt="6D Data Hunt">
                         </a>
                         <div class="layer">
                             <h2>6D Data Hunt</h2>
-                            <sub>6 min read.</sub>
-                        </div>                    
-                    </div>
-
-                    <div class="project">
-                        <a href="../pages/6dhunt.html">
-                            <img src="../assets/graph.png">
-                        </a>
-                        <div class="layer">
-                            <h2>6D Data Hunt</h2>
-                        </div>                    
-                    </div>
-
-                    <div class="project">
-                        <a href="../pages/6dhunt.html">
-                            <img src="../assets/graph.png">
-                        </a>
-                        <div class="layer">
-                            <h2>6D Data Hunt</h2>
-                        </div>                    
+                            <sub>6 min read</sub>
+                        </div>
                     </div>
 
                     <div class="project">
                         <a href="../pages/news.html">
-                            <img src="../assets/news.jpeg">
+                            <img src="../assets/news.jpeg" alt="Fake News Detector">
                         </a>
                         <div class="layer">
                             <h2>Fake News Detector</h2>
@@ -93,11 +78,23 @@
 
                 </div>
 
-            </div> 
-             
+            </div>
+
         </div>
     </div>
 
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.add('open');
+        });
+        closeIcon.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+        });
+    </script>
 
 </body>
 </html>

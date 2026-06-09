@@ -7,57 +7,71 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"></head>
+</head>
 <body>
 
 
     <div id="header">
         <div class="container">
 
-    <!-- ---------NAV BAR--------- -->            
+    <!-- ---------NAV BAR--------- -->
             <nav>
                 <a href="../index.html"><img src="../assets/ananya_logo.png" class="logo"></a>
-                <ul>
+                <ul id="nav-menu">
+                    <i class="fas fa-times" id="close-icon"></i>
                     <li><a href="../pages/portfolio.html">Portfolio</a></li>
                     <li><a href="../pages/resume.html">Resume</a></li>
                     <li><a href="../pages/contact.html">Contact</a></li>
-                    </li>
                 </ul>
+                <i class="fas fa-bars" id="menu-icon"></i>
             </nav>
 
     <!-- ---------CONTACT SECTION--------- -->
             <div id="contact">
-                <div class="contact-container">
-                    <div class="row">
-                        
+                <div class="container">
+                    <div class="contact-container">
+
                         <div class="contact-left">
                             <h1 class="sub-title">Contact Me</h1>
-                            <p><i class="fa-solid fa-paper-plane"></i>ananyachembai@gmail.com</p>
-                            <p><i class="fa-solid fa-phone"></i>+(412) 450- 7128</p>
+                            <p><i class="fa-solid fa-paper-plane"></i>chembaiananya@gmail.com</p>
+                            <p><i class="fa-solid fa-phone"></i>+(412) 450-7128</p>
                             <div class="social-icons">
-                                <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
-                                <a href="https://github.com"><i class="fa-brands fa-github"></i></a>
-                                <a href="https://linkedin.com"><i class="fa-brands fa-linkedin"></i></i></a>
+                                <a href="https://instagram.com" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="https://github.com/ananyachem" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
                             </div>
                         </div>
-                        
+
                         <div class="contact-right">
                             <form action="https://formspree.io/f/mnnvpgog" method="POST">
                                 <input type="text" name="Name" placeholder="Your Name" required>
                                 <input type="email" name="Email" placeholder="Your Email" required>
-                                <textarea name="message" rows=6 placeholder="Your Message" required></textarea>
+                                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
                                 <button type="submit" class="project-btn">Send Message</button>
                             </form>
                         </div>
 
                     </div>
                 </div>
-            </div> 
+            </div>
 
         </div>
     </div>
 
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.add('open');
+        });
+        closeIcon.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+        });
+    </script>
 
 </body>
 </html>

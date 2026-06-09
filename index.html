@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,16 +16,16 @@
     <div id="header">
         <div class="container">
 
-    <!-- ---------NAV BAR--------- -->            
+    <!-- ---------NAV BAR--------- -->
             <nav>
                 <a href="index.html"><img src="assets/ananya_logo.png" class="logo"></a>
-                <ul>
+                <ul id="nav-menu">
+                    <i class="fas fa-times" id="close-icon"></i>
                     <li><a href="pages/portfolio.html">Portfolio</a></li>
                     <li><a href="pages/resume.html">Resume</a></li>
                     <li><a href="pages/contact.html">Contact</a></li>
-                    <i class="fas fa-times"></i>
                 </ul>
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars" id="menu-icon"></i>
             </nav>
 
     <!-- ---------HEADER SECTION--------- -->
@@ -36,10 +37,22 @@
                 </div>
                 <img src="assets/pink_computer_gif.webp" class="pink-computer">
             </div>
-            
+
         </div>
     </div>
 
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.add('open');
+        });
+        closeIcon.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+        });
+    </script>
 
 </body>
 </html>

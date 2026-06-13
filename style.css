@@ -118,8 +118,8 @@ body{
 .bg .blob{
     position: absolute;
     border-radius: 50%;
-    filter: blur(55px);
-    opacity: 0.85;
+    filter: blur(60px);
+    opacity: 0.5;
     will-change: transform, border-radius;
 }
 .bg .b1{

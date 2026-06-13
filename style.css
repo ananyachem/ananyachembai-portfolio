@@ -105,98 +105,70 @@ body{
 }
 
 
+/* ---------ABSTRACT BACKGROUND--------- */
+/* one fixed layer of colourful blurred dots behind every page.
+   body is transparent so this shows through; html holds the base cream. */
+.bg{
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+.bg .blob{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(46px);
+    opacity: 0.8;
+    will-change: transform, border-radius;
+}
+.bg .b1{
+    width: 27rem; height: 27rem; top: -6rem; left: -6rem;
+    background: linear-gradient(135deg, #ff7aa2, #ff9e7d);
+    animation: drift 20s ease-in-out infinite, blob-morph 16s ease-in-out infinite;
+}
+.bg .b2{
+    width: 25rem; height: 25rem; top: -5rem; right: -7rem;
+    background: linear-gradient(135deg, #bda4ec, #8ec2ef);
+    animation: drift 24s ease-in-out infinite reverse, blob-morph 19s ease-in-out infinite;
+}
+.bg .b3{
+    width: 21rem; height: 21rem; top: 33%; left: -9rem;
+    background: linear-gradient(135deg, #ffd97a, #ff9e7d);
+    animation: drift 26s ease-in-out infinite, blob-morph 21s ease-in-out infinite reverse;
+}
+.bg .b4{
+    width: 23rem; height: 23rem; top: 40%; right: -8rem;
+    background: linear-gradient(135deg, #8fe0c2, #7ad0c6);
+    animation: drift 22s ease-in-out infinite reverse, blob-morph 18s ease-in-out infinite;
+}
+.bg .b5{
+    width: 25rem; height: 25rem; bottom: -7rem; left: -5rem;
+    background: linear-gradient(135deg, #ff9bac, #ff7aa2);
+    animation: drift 23s ease-in-out infinite, blob-morph 20s ease-in-out infinite reverse;
+}
+.bg .b6{
+    width: 27rem; height: 27rem; bottom: -8rem; right: -6rem;
+    background: linear-gradient(135deg, #ab90e6, #8ec2ef);
+    animation: drift 21s ease-in-out infinite reverse, blob-morph 17s ease-in-out infinite;
+}
+.bg .b7{
+    width: 16rem; height: 16rem; top: 16%; left: 45%;
+    background: linear-gradient(135deg, #ffc18a, #ffd97a);
+    animation: drift 28s ease-in-out infinite, blob-morph 23s ease-in-out infinite;
+}
+.bg .b8{
+    width: 18rem; height: 18rem; bottom: 10%; left: 37%;
+    background: linear-gradient(135deg, #8ec8ef, #8fe0c2);
+    animation: drift 25s ease-in-out infinite reverse, blob-morph 22s ease-in-out infinite reverse;
+}
+
+
 /* ---------HEADER SECTION--------- */
 #header{
     width: 100%;
     min-height: 100vh;
     position: relative;
-    overflow: hidden;
-}
-#header > *{
-    position: relative;
-    z-index: 1;
-}
-#header::before,
-#header::after{
-    content: '';
-    position: absolute;
-    z-index: 0;
-    border-radius: 50%;
-    filter: blur(55px);
-    pointer-events: none;
-}
-#header::before{
-    width: 30rem;
-    height: 30rem;
-    background: linear-gradient(135deg, #fde2e4, #fff1bf);
-    top: -8rem;
-    right: -10rem;
-    animation: drift 16s ease-in-out infinite, blob-morph 18s ease-in-out infinite;
-}
-#header::after{
-    width: 24rem;
-    height: 24rem;
-    background: linear-gradient(135deg, #f4effa, #cfe7f5);
-    bottom: -6rem;
-    left: -8rem;
-    animation: drift 20s ease-in-out infinite reverse, blob-morph 22s ease-in-out infinite;
-}
-
-/* Floating pastel blobs pinned to the viewport — they sit behind the
-   transparent body, so they stay put while the page slides on top */
-html::before,
-html::after{
-    content: '';
-    position: fixed;
-    z-index: -1;
-    border-radius: 50%;
-    filter: blur(55px);
-    pointer-events: none;
-}
-html::before{
-    width: 26rem;
-    height: 26rem;
-    background: linear-gradient(135deg, #ffd9c0, #fde2e4);
-    top: 30%;
-    left: -10rem;
-    animation: drift 24s ease-in-out infinite, blob-morph 20s ease-in-out infinite reverse;
-}
-html::after{
-    width: 22rem;
-    height: 22rem;
-    background: linear-gradient(135deg, #cfe7f5, #d6f5e3);
-    bottom: -6rem;
-    right: 12%;
-    animation: drift 18s ease-in-out infinite reverse, blob-morph 24s ease-in-out infinite;
-}
-
-
-/* ---------PAGE SLIDE TRANSITIONS--------- */
-@keyframes slide-out-left{
-    to{ transform: translateX(-100%); opacity: 0; }
-}
-@keyframes slide-out-right{
-    to{ transform: translateX(100%); opacity: 0; }
-}
-@keyframes slide-in-right{
-    from{ transform: translateX(100%); opacity: 0; }
-    to{ transform: translateX(0); opacity: 1; }
-}
-@keyframes slide-in-left{
-    from{ transform: translateX(-100%); opacity: 0; }
-    to{ transform: translateX(0); opacity: 1; }
-}
-body.is-leaving-left{
-    animation: slide-out-left 0.45s cubic-bezier(0.6, 0.05, 0.3, 1) forwards;
-}
-body.is-leaving-right{
-    animation: slide-out-right 0.45s cubic-bezier(0.6, 0.05, 0.3, 1) forwards;
-}
-body.is-entering-right{
-    animation: slide-in-right 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
-}
-body.is-entering-left{
-    animation: slide-in-left 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 .container{
     padding: 0.5rem 10%;
@@ -385,7 +357,6 @@ a.btn-primary:hover{
 .marquee{
     overflow: hidden;
     border-top: 1px solid #fde2e4;
-    border-bottom: 1px solid #fde2e4;
     padding: 0.85rem 0;
 }
 .marquee-track{

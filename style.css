@@ -378,14 +378,15 @@ a.btn-primary:hover{
 }
 .row{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 .about-col-1{
     flex-shrink: 1;
     padding: 1rem;
-    flex-basis: 30%;
+    flex-basis: 40%;
     min-width: 250px;
 }
 .polaroid{
@@ -395,7 +396,7 @@ a.btn-primary:hover{
     box-shadow: 0 12px 30px rgba(51, 51, 51, 0.15);
     transform: rotate(-3deg);
     transition: transform 0.35s ease;
-    max-width: 350px;
+    max-width: 440px;
     margin: 0 auto;
 }
 .polaroid:hover{
@@ -443,9 +444,26 @@ a.btn-primary:hover{
     background: linear-gradient(90deg, #ff5d8f, #ff87ab);
     margin-top: 0.75rem;
 }
-.row, .contact-container, .resume-container, .portfolio-header{
+/* Sequential reveal — content fades up in order on every page,
+   mirroring the staggered entrance on the home page. */
+.portfolio-header{
     animation: fade-up 0.6s ease backwards;
 }
+.about-col-1{ animation: fade-up 0.6s ease 0.1s backwards; }
+.about-col-2{ animation: fade-up 0.6s ease 0.25s backwards; }
+.about-col-3{ animation: fade-up 0.6s ease 0.4s backwards; }
+/* Contact: every line of detail and every form field cascades in (snappy) */
+.contact-left .sub-title{ animation: fade-up 0.45s ease 0.05s backwards; }
+.contact-left p:nth-of-type(1){ animation: fade-up 0.45s ease 0.11s backwards; }
+.contact-left p:nth-of-type(2){ animation: fade-up 0.45s ease 0.17s backwards; }
+.contact-left p:nth-of-type(3){ animation: fade-up 0.45s ease 0.23s backwards; }
+.contact-left .social-icons{ animation: fade-up 0.45s ease 0.29s backwards; }
+.contact-right form input:nth-of-type(1){ animation: fade-up 0.45s ease 0.35s backwards; }
+.contact-right form input:nth-of-type(2){ animation: fade-up 0.45s ease 0.41s backwards; }
+.contact-right form textarea{ animation: fade-up 0.45s ease 0.47s backwards; }
+.contact-right form button{ animation: fade-up 0.45s ease 0.53s backwards; }
+.resume{ animation: fade-up 0.7s ease 0.15s backwards; }
+.resume-container .project-btn{ animation: fade-up 0.7s ease 0.4s backwards; }
 .tab-titles{
     display: flex;
     flex-wrap: wrap;
@@ -479,12 +497,95 @@ a.btn-primary:hover{
 .tab-content ul li span{
     color: #ff5d8f;
 }
-.tab-content{
-    display: none;
+/* All three panels share one grid cell, so the container always reserves
+   space for the tallest tab and the footer stays anchored when switching. */
+.tab-contents{
+    display: grid;
 }
+.tab-content{
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+}
+/* Only the incoming tab transitions (fades in); the outgoing one hides
+   instantly, so the two never overlap mid-switch. */
 .tab-content.active-tab{
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.35s ease;
+}
+
+
+/* ---------ABOUT PAGE: photo + intro fill the first screen; skills below--------- */
+@keyframes bounce{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(0.6rem); }
+}
+@keyframes glow-pulse{
+    0%, 100%{
+        text-shadow: 0 0 12px rgba(255, 93, 143, 0.65),
+                     0 0 26px rgba(255, 93, 143, 0.4);
+    }
+    50%{
+        text-shadow: 0 0 20px rgba(255, 93, 143, 0.95),
+                     0 0 44px rgba(255, 93, 143, 0.7),
+                     0 0 64px rgba(255, 93, 143, 0.4);
+    }
+}
+.scroll-down{
     display: block;
-    animation: fade-up 0.4s ease;
+    text-align: center;
+    color: #ff5d8f;
+    font-size: 3rem;
+    text-decoration: none;
+    margin-top: 0.75rem;
+    animation: bounce 1.8s ease-in-out infinite,
+               glow-pulse 1.8s ease-in-out infinite;
+}
+.scroll-down:hover{
+    color: #ff87ab;
+}
+
+@media only screen and (min-width: 769px){
+    .about-page #about{
+        padding: 0;
+    }
+    /* drop the doubled-up inner padding so content has room */
+    .about-page #about > .container{
+        width: 100%;
+        padding: 0;
+    }
+    /* the hero holds the polaroid + intro and fills the first screenful,
+       with the scroll-down arrow resting near the bottom */
+    .about-hero{
+        min-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 0.5rem;
+    }
+    .about-hero .row{
+        gap: 4rem;
+    }
+    /* let the column hug the photo so the 4rem gap is the real separation */
+    .about-page .about-col-1{
+        flex: 0 0 auto;
+        padding: 0;
+    }
+    .about-page .polaroid{
+        max-width: none;
+    }
+    .about-page .polaroid img{
+        width: auto;
+        max-width: 100%;
+        max-height: 46vh;
+    }
+    /* skills sit below the fold, with breathing room above the titles */
+    .about-page .about-col-3{
+        padding-top: 2.5rem;
+        padding-bottom: 1rem;
+        scroll-margin-top: 1.5rem;
+    }
 }
 
 
@@ -686,6 +787,14 @@ a.btn-primary:hover{
     height: 70vh;
     box-shadow: 0 0 20px #ff5d8f;
     border-radius: 8px;
+}
+/* ---------RESUME PAGE: keep the original size; scroll within the embed--------- */
+@media only screen and (min-width: 769px){
+    .resume-page .resume{
+        width: 85%;
+        max-width: 900px;
+        height: 80vh;
+    }
 }
 
 

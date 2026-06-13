@@ -36,3 +36,26 @@
     }
     setTimeout(reset, 120);
 })();
+
+
+/* Twinkling sparkles on every page. The home page ships them in its markup;
+   here we inject the same set into any page that doesn't already have them. */
+(function () {
+    "use strict";
+
+    var header = document.getElementById("header");
+    if (!header || header.querySelector(".sparkles")) { return; }
+
+    var wrap = document.createElement("div");
+    wrap.className = "sparkles";
+    wrap.setAttribute("aria-hidden", "true");
+
+    for (var i = 1; i <= 4; i++) {
+        var spark = document.createElement("span");
+        spark.className = "sparkle s" + i;
+        spark.innerHTML = "&#10022;";
+        wrap.appendChild(spark);
+    }
+
+    header.insertBefore(wrap, header.firstChild);
+})();

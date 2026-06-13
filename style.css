@@ -993,6 +993,17 @@ footer p{
         margin-left: auto;
         margin-right: auto;
     }
+    /* the scroll-down arrow is only meaningful for the desktop hero */
+    .scroll-down{
+        display: none;
+    }
+    /* every page gets the same trim spacing from the nav and the footer */
+    #about, #portfolio, #contact{
+        padding: 2rem 0;
+    }
+    .contact-container{
+        margin-top: 1.5rem;
+    }
 }
 
 
@@ -1024,6 +1035,11 @@ footer p{
     }
     .header-text h1{
         font-size: 2.25rem;
+    }
+    a.btn-primary{
+        font-size: 0.85rem;
+        padding: 0.5rem 1.1rem;
+        margin-top: 1.25rem;
     }
     .pink-computer{
         height: 14rem;

@@ -796,6 +796,10 @@ a.btn-primary:hover{
         max-width: 900px;
         height: 80vh;
     }
+    /* the embed is interactive on desktop, so the download button is mobile-only */
+    .resume-download{
+        display: none;
+    }
 }
 
 
@@ -1070,6 +1074,12 @@ footer p{
         max-width: 58%;
         min-width: unset;
         object-fit: contain;
+        /* push it lower on the screen; viewport-relative so short phones
+           keep a safe gap above the marquee while tall phones get more */
+        margin-top: clamp(0.4rem, 6.5vh, 2cm);
+        /* reserved space so it can never touch the marquee, even when the
+           layout is tight on very small screens */
+        margin-bottom: 0.85rem;
     }
     .marquee{
         padding: 0.6rem 0;

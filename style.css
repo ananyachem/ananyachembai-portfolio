@@ -77,12 +77,53 @@ body{
         transform: translateX(-50%);
     }
 }
+@keyframes twinkle{
+    0%, 100%{
+        opacity: 0.2;
+        transform: scale(0.7) rotate(0deg);
+    }
+    50%{
+        opacity: 1;
+        transform: scale(1.15) rotate(20deg);
+    }
+}
 
 
 /* ---------HEADER SECTION--------- */
 #header{
     width: 100%;
     min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+#header > *{
+    position: relative;
+    z-index: 1;
+}
+#header::before,
+#header::after{
+    content: '';
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+}
+#header::before{
+    width: 30rem;
+    height: 30rem;
+    background: #fde2e4;
+    top: -8rem;
+    right: -10rem;
+    animation: drift 12s ease-in-out infinite alternate;
+}
+#header::after{
+    width: 24rem;
+    height: 24rem;
+    background: #f4effa;
+    bottom: -6rem;
+    left: -8rem;
+    animation: drift 14s ease-in-out infinite alternate-reverse;
 }
 .container{
     padding: 0.5rem 10%;
@@ -143,41 +184,70 @@ nav .fa-bars{
 nav ul .fa-times{
     display: none;
 }
-.home{
-    position: relative;
-    overflow: hidden;
+.home-page{
+    height: 100svh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
-.home > *{
-    position: relative;
-    z-index: 1;
+.home-page #header{
+    flex: 1;
+    min-height: 0;
 }
-.home::before,
-.home::after{
-    content: '';
+.home-page footer{
+    border-top: none;
+    padding: 0.9rem 10%;
+}
+.home-page footer .social-icons{
+    margin-bottom: 0.4rem;
+}
+.home{
+    display: flex;
+    flex-direction: column;
+}
+.home .container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.home .header-content{
+    flex: 1;
+    margin-top: 0;
+}
+.sparkles{
     position: absolute;
-    z-index: 0;
-    border-radius: 50%;
-    filter: blur(70px);
+    inset: 0;
     pointer-events: none;
 }
-.home::before{
-    width: 30rem;
-    height: 30rem;
-    background: #fde2e4;
-    top: -8rem;
-    right: -10rem;
-    animation: drift 12s ease-in-out infinite alternate;
+.sparkle{
+    position: absolute;
+    color: #ff87ab;
+    animation: twinkle 3.5s ease-in-out infinite;
 }
-.home::after{
-    width: 24rem;
-    height: 24rem;
-    background: #f4effa;
-    bottom: -6rem;
-    left: -8rem;
-    animation: drift 14s ease-in-out infinite alternate-reverse;
+.sparkle.s1{
+    top: 16%;
+    left: 45%;
+    font-size: 1.5rem;
+    color: #ff5d8f;
+}
+.sparkle.s2{
+    top: 32%;
+    right: 4%;
+    font-size: 1.1rem;
+    color: #9b72cf;
+    animation-delay: 0.8s;
+}
+.sparkle.s3{
+    bottom: 16%;
+    left: 3%;
+    font-size: 1.3rem;
+    animation-delay: 1.6s;
+}
+.sparkle.s4{
+    top: 62%;
+    left: 56%;
+    font-size: 0.9rem;
+    color: #ff5d8f;
+    animation-delay: 2.4s;
 }
 .header-content {
     margin-top: 10%;
@@ -198,7 +268,7 @@ nav ul .fa-times{
     animation: fade-up 0.7s ease 0.1s backwards;
 }
 .header-text h1{
-    font-size: 3.5rem;
+    font-size: clamp(2.25rem, 4vh + 1rem, 3.5rem);
     margin-top: 1.25rem;
     animation: fade-up 0.7s ease 0.25s backwards;
 }
@@ -233,7 +303,7 @@ a.btn-primary:hover{
 .pink-computer{
     flex: 1;
     object-fit: contain;
-    height: 20rem;
+    height: clamp(13rem, 34vh, 20rem);
     min-width: 17.5rem;
     animation: fade-up 0.7s ease 0.5s backwards, float 5s ease-in-out 1.2s infinite;
 }
@@ -242,7 +312,6 @@ a.btn-primary:hover{
     border-top: 1px solid #fde2e4;
     border-bottom: 1px solid #fde2e4;
     padding: 0.85rem 0;
-    margin-top: 2rem;
 }
 .marquee-track{
     display: flex;
@@ -273,12 +342,31 @@ a.btn-primary:hover{
     flex-basis: 30%;
     min-width: 250px;
 }
-.about-col-1 img{
-    width: 100%;
+.polaroid{
+    background: #fff;
+    padding: 0.9rem 0.9rem 0.6rem;
+    border-radius: 6px;
+    box-shadow: 0 12px 30px rgba(51, 51, 51, 0.15);
+    transform: rotate(-3deg);
+    transition: transform 0.35s ease;
     max-width: 350px;
+    margin: 0 auto;
+}
+.polaroid:hover{
+    transform: rotate(0deg) scale(1.02);
+}
+.polaroid img{
+    width: 100%;
     height: auto;
-    border-radius: 15px;
-    border: 3px double #333;
+    display: block;
+    border-radius: 4px;
+}
+.polaroid figcaption{
+    font-family: "Pacifico", cursive;
+    color: #ff5d8f;
+    text-align: center;
+    margin-top: 0.6rem;
+    font-size: 1.25rem;
 }
 .about-col-2{
     flex-basis: 45%;
@@ -395,7 +483,23 @@ a.btn-primary:hover{
 }
 .project:hover{
     box-shadow: 0 0 20px 10px #fde2e4;
-    transform: translateY(-6px);
+    transform: translateY(-6px) rotate(-1deg);
+}
+.project::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -85%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    z-index: 2;
+    transition: left 0.6s ease;
+}
+.project:hover::after{
+    left: 135%;
 }
 .project a{
     display: block;
@@ -443,9 +547,20 @@ a.btn-primary:hover{
     color: #ff5d8f;
     text-decoration: none;
     font-size: 1.125rem;
+    transition: transform 0.25s ease;
 }
 .back-link:hover{
     text-decoration: underline;
+    transform: translateX(-4px);
+}
+.reveal{
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible{
+    opacity: 1;
+    transform: none;
 }
 .project-content{
     margin: 3% 5%;
@@ -513,9 +628,11 @@ a.btn-primary:hover{
 /* ---------RESUME SECTION--------- */
 .resume-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2rem 2rem 0 2rem;
+    gap: 1.5rem;
+    margin: 1rem 2rem 0 2rem;
 }
 .resume{
     width: 85%;
@@ -687,6 +804,18 @@ footer p{
         cursor: pointer;
         color: #ff5d8f;
     }
+
+    /* About stacks: center the photo and intro text */
+    .about-col-1, .about-col-2{
+        flex-basis: 100%;
+    }
+    .about-col-2{
+        text-align: center;
+    }
+    .about-col-2 .sub-title::after{
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 
@@ -697,6 +826,12 @@ footer p{
     }
     .logo{
         width: 10rem;
+    }
+
+    /* Home page scrolls naturally on phones */
+    .home-page{
+        height: auto;
+        min-height: 100svh;
     }
 
     /* Header hero */
@@ -723,8 +858,8 @@ footer p{
     .about-col-1, .about-col-2, .about-col-3{
         flex-basis: 100%;
     }
-    .about-col-1 img{
-        max-width: 100%;
+    .polaroid{
+        max-width: 300px;
     }
     .about-col-2 p, .about-col-2 span, .about-col-2 li,
     .about-col-3 p, .about-col-3 span, .about-col-3 li{

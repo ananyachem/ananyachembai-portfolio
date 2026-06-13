@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Classifying malaria-infected blood cells with a residual CNN — deep learning project by Ananya Chembai.">
-    <title>Ananya Chembai</title>
+    <title>Malaria Cell Classification — Ananya Chembai</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Pacifico&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
                 <a href="../index.html"><img src="../assets/ananya_logo.png" class="logo"></a>
                 <ul id="nav-menu">
                     <i class="fas fa-times" id="close-icon"></i>
+                    <li><a href="../index.html">Home</a></li>
                     <li><a href="../pages/portfolio.html" class="active">Projects</a></li>
                     <li><a href="../pages/resume.html">Resume</a></li>
                     <li><a href="../pages/contact.html">Contact</a></li>
@@ -37,15 +38,12 @@
                 <h2>Malaria Cell Classification Using CNNs</h2>
                 <p>2 min read.</p><br>
                 <p>Malaria is a life-threatening disease caused by Plasmodium parasites, and timely diagnosis is critical to
-                    treatment. In this project, I built a Convolutional Neural Network (CNN) to classify whether a given cell
-                    image is parasitized or uninfected.
-                    <br>The goal: make detection faster and more accurate using deep learning by classifying microscope images
-                    of blood cells based on whether they are parasitized by Plasmodium or not. This is a binary classification
-                    problem tackled using a custom residual CNN architecture.
+                    treatment. In this project, I built a Convolutional Neural Network (CNN) that looks at a microscope image
+                    of a blood cell and decides: parasitized or uninfected. A binary classification problem, tackled with a
+                    custom residual CNN architecture — with the goal of making detection faster and more accurate than the
+                    human eye on a long shift.
                 </p>
                 <center><img src="../assets/malaria/malaria_cell.png" class="malaria-img" alt="Malaria Infected Cell"><br><sub>Fig.1 Malaria Infected Cell</sub></center><br>
-
-                <h3>Methodology</h3>
 
                 <h3>1. Data Augmentation</h3>
                 <p>To improve the model's ability to generalize and handle variability in image orientation, lighting, and scale,
@@ -54,13 +52,14 @@
                     <br>- Random brightness, contrast, saturation, and hue shifts
                     <br>- Random rotations (0–270°)
                     <br>- Random zooming followed by resizing and cropping
-                    This helped mimic real-world distortions in microscopic imaging.
+                    <br>All of this helped mimic the real-world distortions you'd see in microscopic imaging.
                 </p><br>
 
                 <h3>2. CNN Architecture with Residual Blocks</h3>
                 <p>I implemented a CNN with residual connections to tackle the vanishing gradients problem and boost performance
                     on deeper networks.
-                    <pre class="code-architecture">
+                </p>
+                <pre class="code-architecture">
 
     Architecture Summary:
 
@@ -86,7 +85,6 @@
             Optimizer: AdamW (lr = 0.0001, weight decay = 1e-4)
             Loss Function: Binary Cross-Entropy
                     </pre>
-                </p>
                 <center><img src="../assets/malaria/filters.png" alt="Learned Convolution Layers"><br><sub>Fig.2 Learned Convolution Layers</sub></center><br>
 
                 <h3>Model Results</h3>
@@ -104,13 +102,11 @@
                 </p><br>
 
                 <h3>Conclusions</h3>
-                <p>Data augmentation significantly boosted the model's robustness and prevented overfitting.
-                    Residual connections made training deeper architectures much more efficient.
-                    Even with relatively few layers, this architecture delivered state-of-the-art results for binary medical
-                    image classification.
-                    This project showcases the power of CNNs in medical diagnostics and the potential of using residual blocks
-                    even in smaller networks. With more data and fine-tuning, this model could be part of a real-time diagnostic
-                    pipeline for malaria detection in low-resource settings.
+                <p>Data augmentation gave the model serious robustness and kept overfitting in check, while the residual
+                    connections made training deeper layers painless. Even with a relatively small network, the architecture
+                    delivered state-of-the-art results for binary medical image classification.
+                    <br>With more data and fine-tuning, I truly believe this model could be part of a real-time diagnostic
+                    pipeline for malaria detection in low-resource settings — which is exactly where it's needed most.
                 </p><br>
 
                 <center>
@@ -142,6 +138,20 @@
         });
         closeIcon.addEventListener('click', () => {
             navMenu.classList.remove('open');
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.project-content center, .project-content h3').forEach((el) => {
+            el.classList.add('reveal');
+            revealObserver.observe(el);
         });
     </script>
 

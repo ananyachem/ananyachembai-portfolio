@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hunting for hidden shapes in a six-dimensional dataset with K-Means and PCA — large-scale computing project by Ananya Chembai.">
-    <title>Ananya Chembai</title>
+    <title>6D Data Hunt — Ananya Chembai</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Pacifico&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
                 <a href="../index.html"><img src="../assets/ananya_logo.png" class="logo"></a>
                 <ul id="nav-menu">
                     <i class="fas fa-times" id="close-icon"></i>
+                    <li><a href="../index.html">Home</a></li>
                     <li><a href="../pages/portfolio.html" class="active">Projects</a></li>
                     <li><a href="../pages/resume.html">Resume</a></li>
                     <li><a href="../pages/contact.html">Contact</a></li>
@@ -94,6 +95,11 @@
                 <h3>6. 5D Star (no really)</h3>
                 <p>This one gave me headaches. It looked like lines were radiating from a center point — kinda like an asterisk. It had just
                     enough contribution from PC6 (~4%) that I believe it was a 5D object tilted in 6D.
+                </p><br>
+
+                <h3>The Takeaway</h3>
+                <p>Six shapes, six dimensions, and zero ability to actually see any of them — and yet, we found them all.
+                    Not bad for a dataset that refused to be visualized!
                 </p>
 
                 <center>
@@ -125,6 +131,20 @@
         });
         closeIcon.addEventListener('click', () => {
             navMenu.classList.remove('open');
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.project-content center, .project-content h3').forEach((el) => {
+            el.classList.add('reveal');
+            revealObserver.observe(el);
         });
     </script>
 

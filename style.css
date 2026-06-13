@@ -118,48 +118,48 @@ body{
 .bg .blob{
     position: absolute;
     border-radius: 50%;
-    filter: blur(46px);
-    opacity: 0.8;
+    filter: blur(55px);
+    opacity: 0.85;
     will-change: transform, border-radius;
 }
 .bg .b1{
     width: 27rem; height: 27rem; top: -6rem; left: -6rem;
-    background: linear-gradient(135deg, #ff7aa2, #ff9e7d);
+    background: linear-gradient(135deg, #fde2e4, #fff1bf);
     animation: drift 20s ease-in-out infinite, blob-morph 16s ease-in-out infinite;
 }
 .bg .b2{
     width: 25rem; height: 25rem; top: -5rem; right: -7rem;
-    background: linear-gradient(135deg, #bda4ec, #8ec2ef);
+    background: linear-gradient(135deg, #f4effa, #cfe7f5);
     animation: drift 24s ease-in-out infinite reverse, blob-morph 19s ease-in-out infinite;
 }
 .bg .b3{
     width: 21rem; height: 21rem; top: 33%; left: -9rem;
-    background: linear-gradient(135deg, #ffd97a, #ff9e7d);
+    background: linear-gradient(135deg, #ffd9c0, #fde2e4);
     animation: drift 26s ease-in-out infinite, blob-morph 21s ease-in-out infinite reverse;
 }
 .bg .b4{
     width: 23rem; height: 23rem; top: 40%; right: -8rem;
-    background: linear-gradient(135deg, #8fe0c2, #7ad0c6);
+    background: linear-gradient(135deg, #cfe7f5, #d6f5e3);
     animation: drift 22s ease-in-out infinite reverse, blob-morph 18s ease-in-out infinite;
 }
 .bg .b5{
     width: 25rem; height: 25rem; bottom: -7rem; left: -5rem;
-    background: linear-gradient(135deg, #ff9bac, #ff7aa2);
+    background: linear-gradient(135deg, #fde2e4, #ffd9c0);
     animation: drift 23s ease-in-out infinite, blob-morph 20s ease-in-out infinite reverse;
 }
 .bg .b6{
     width: 27rem; height: 27rem; bottom: -8rem; right: -6rem;
-    background: linear-gradient(135deg, #ab90e6, #8ec2ef);
+    background: linear-gradient(135deg, #f4effa, #cfe7f5);
     animation: drift 21s ease-in-out infinite reverse, blob-morph 17s ease-in-out infinite;
 }
 .bg .b7{
     width: 16rem; height: 16rem; top: 16%; left: 45%;
-    background: linear-gradient(135deg, #ffc18a, #ffd97a);
+    background: linear-gradient(135deg, #fff1bf, #ffd9c0);
     animation: drift 28s ease-in-out infinite, blob-morph 23s ease-in-out infinite;
 }
 .bg .b8{
     width: 18rem; height: 18rem; bottom: 10%; left: 37%;
-    background: linear-gradient(135deg, #8ec8ef, #8fe0c2);
+    background: linear-gradient(135deg, #cfe7f5, #d6f5e3);
     animation: drift 25s ease-in-out infinite reverse, blob-morph 22s ease-in-out infinite reverse;
 }
 

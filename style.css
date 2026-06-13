@@ -335,7 +335,8 @@ nav ul .fa-times{
 a.btn-primary{
     display: inline-block;
     margin-top: 1.5rem;
-    padding: 0.8rem 1.9rem;
+    padding: clamp(0.55rem, 0.4rem + 0.6vw, 0.8rem) clamp(1.2rem, 0.8rem + 1.8vw, 1.9rem);
+    font-size: clamp(0.95rem, 0.82rem + 0.6vw, 1.25rem);
     background: #ff5d8f;
     color: #fff;
     text-decoration: none;
@@ -536,7 +537,7 @@ a.btn-primary:hover{
     display: block;
     text-align: center;
     color: #ff5d8f;
-    font-size: 3rem;
+    font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
     text-decoration: none;
     margin-top: 0.75rem;
     animation: bounce 1.8s ease-in-out infinite,
@@ -693,7 +694,7 @@ a.btn-primary:hover{
     margin-bottom: 1.5rem;
     color: #ff5d8f;
     text-decoration: none;
-    font-size: 1.125rem;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
     transition: transform 0.25s ease;
 }
 .back-link:hover{
@@ -742,8 +743,8 @@ a.btn-primary:hover{
 .project-btn{
     display: inline-block;
     margin: 1rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.25rem;
+    padding: clamp(0.5rem, 0.38rem + 0.5vw, 0.75rem) clamp(1rem, 0.75rem + 1.2vw, 1.5rem);
+    font-size: clamp(0.95rem, 0.85rem + 0.45vw, 1.25rem);
     text-decoration: none;
     color: #333;
     background-color: #fde2e4;
